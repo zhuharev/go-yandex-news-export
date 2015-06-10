@@ -21,6 +21,14 @@ type Item struct {
 	FullText string `xml:"yandex:full-text"`
 }
 
+func NewFeed() *Feed {
+	return &Feed{
+		Yandex:  "http://news.yandex.ru",
+		Media:   "http://search.yahoo.com/mrss/",
+		Version: "2.0",
+	}
+}
+
 func (f *Feed) Marshal() ([]byte, error) {
 	data, err := xml.MarshalIndent(f, " ", " ") //xml.Marshal(f)
 	data = append([]byte(xml.Header), data...)

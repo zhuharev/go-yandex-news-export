@@ -28,15 +28,11 @@ var needle = `<?xml version="1.0" encoding="UTF-8"?>
  </rss>`
 
 func TestMarshal(t *testing.T) {
-	feed := &Feed{
-		Yandex:  "http://news.yandex.ru",
-		Media:   "http://search.yahoo.com/mrss/",
-		Version: "2.0",
-		Items: []Item{
-			Item{Title: "hello", FullText: "fulltext"},
-			Item{Title: "hello1", FullText: "fulltext1"},
-			Item{Title: "hello2", FullText: "fulltext2"},
-		},
+	feed := NewFeed()
+	feed.Items = []Item{
+		Item{Title: "hello", FullText: "fulltext"},
+		Item{Title: "hello1", FullText: "fulltext1"},
+		Item{Title: "hello2", FullText: "fulltext2"},
 	}
 	bts, err := feed.Marshal()
 	if err != nil {
